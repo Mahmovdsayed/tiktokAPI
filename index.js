@@ -66,6 +66,14 @@ const formatResponse = (downloadURL, data) => {
   };
 };
 
+app.get("/", (req, res) => {
+  return res.status(200).json({
+    status: true,
+    error:
+      "GET /download This endpoint retrieves download URLs for a TikTok video.",
+  });
+});
+
 app.get("/download", async (req, res) => {
   const url = req.query.url;
 
