@@ -1,0 +1,25 @@
+{
+  "name": "tiktok-api-downloader",
+  "description": "This API allows you to download media content from TikTok. You can retrieve video and audio download URLs, along with metadata about the video.",
+  "type": "commonjs",
+  "main": "index.js",
+  "engines": {
+    "node": "18.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "tiktok",
+    "tiktok-api",
+    "tiktok-downloader"
+  ],
+  "author": "Mahmovdsayed",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "nayan-media-downloader": "^2.4.5"
+  }
+}
