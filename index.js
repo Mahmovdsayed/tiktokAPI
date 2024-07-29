@@ -7,6 +7,65 @@ const PORT = process.env.PORT || 4000;
 
 app.use(cors());
 
+const fetchVideoData = async (url) => {
+  const options = {
+    method: "POST",
+    headers: {
+      accept: "application/json",
+    },
+  };
+
+  const response = await fetch(
+    `https://snapdouyin.app/wp-json/aio-dl/video-data/?url=${url}`,
+    options
+  );
+  return response.json();
+};
+
+const formatResponse = (downloadURL, data) => {
+  const {
+    view: likes = null,
+    play: plays = null,
+    comment = null,
+    share = null,
+    download: downloadCount = null,
+    duration: durationInSeconds = null,
+    title = null,
+    author = {},
+  } = downloadURL.data;
+
+  const {
+    id = null,
+    unique_id: uniqueId = null,
+    nickname = null,
+    avatar = null,
+  } = author;
+
+  return {
+    status: true,
+    developer: "API BY MAHMOUD SAYED || https://github.com/Mahmovdsayed",
+    metadata: {
+      likes,
+      plays,
+      comment,
+      share,
+      downloadCount,
+      durationInSeconds,
+      title,
+      thumbnail: data.thumbnail || null,
+      url: data.url || null,
+    },
+    author: {
+      id,
+      unique_id: uniqueId,
+      nickname,
+      avatar,
+      profileURL: uniqueId ? `https://www.tiktok.com/@${uniqueId}` : null,
+    },
+    download: data.medias,
+  };
+};
+
 app.get("/download", async (req, res) => {
   const url = req.query.url;
 
@@ -15,32 +74,13 @@ app.get("/download", async (req, res) => {
   }
 
   try {
-    let downloadURL = await tikdown(url);
-    return res.status(200).json({
-      status: true,
-      developer: "API BY MAHMOUD SAYED || https://github.com/Mahmovdsayed",
-      metadata: {
-        likes: downloadURL.data.view,
-        plays: downloadURL.data.play,
-        comment: downloadURL.data.comment,
-        share: downloadURL.data.share,
-        downloadCount: downloadURL.data.download,
-        durationInSeconds: downloadURL.data.duration,
-        title: downloadURL.data.title,
-      },
-      author: {
-        id: downloadURL.data.author.id,
-        unique_id: downloadURL.data.author.unique_id,
-        nickname: downloadURL.data.author.nickname,
-        avatar: downloadURL.data.author.avatar,
-      },
-      download: {
-        videoDownloadURL: downloadURL.data.video,
-        audioDownloadURL: downloadURL.data.audio,
-      },
-    });
+    const videoData = await fetchVideoData(url);
+    const downloadURL = await tikdown(url);
+
+    const response = formatResponse(downloadURL, videoData);
+    return res.status(200).json(response);
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return res.status(500).json({
       status: false,
       error: "Failed to download video",
