@@ -39,73 +39,74 @@ On success, the response will include:
 
 ```json
 {
-"status": true,
-"developer": "API BY MAHMOUD SAYED || https://github.com/Mahmovdsayed",
-"metadata": {
-"likes": Number,
-"plays": Number,
-"comment": Number,
-"share": Number,
-"downloadCount": Number,
-"durationInSeconds": Number,
-"title": String,
-"thumbnail": String,
-"url": String
-},
-"author": {
-"id": String,
-"unique_id": String,
-"nickname": String,
-"avatar": String,
-"profileURL": String
-},
-"download": [
-{
-"url": String,
-"quality": "hd",
-"extension": "mp4",
-"size": Number,
-"formattedSize": String,
-"videoAvailable": true,
-"audioAvailable": true,
-"chunked": false,
-"cached": false
-},
-{
-"url": String,
-"quality": "sd",
-"extension": "mp4",
-"size": Number,
-"formattedSize": String,
-"videoAvailable": true,
-"audioAvailable": true,
-"chunked": false,
-"cached": false
-},
-{
-"url": String,
-"quality": "watermark",
-"extension": "mp4",
-"size": Number,
-"formattedSize": String,
-"videoAvailable": true,
-"audioAvailable": true,
-"chunked": false,
-"cached": false
-},
-{
-"url": String,
-"quality": "128kbps",
-"extension": "mp3",
-"size": Number,
-"formattedSize": String,
-"videoAvailable": false,
-"audioAvailable": true,
-"chunked": false,
-"cached": false
+  "status": true,
+  "developer": "API BY MAHMOUD SAYED || https://github.com/Mahmovdsayed",
+  "metadata": {
+    "likes": Number,
+    "plays": Number,
+    "comment": Number,
+    "share": Number,
+    "downloadCount": Number,
+    "durationInSeconds": Number,
+    "title": String,
+    "thumbnail": String,
+    "url": String
+  },
+  "author": {
+    "id": String,
+    "unique_id": String,
+    "nickname": String,
+    "avatar": String,
+    "profileURL": String
+  },
+  "download": [
+    {
+      "url": String,
+      "quality": "hd",
+      "extension": "mp4",
+      "size": Number,
+      "formattedSize": String,
+      "videoAvailable": true,
+      "audioAvailable": true,
+      "chunked": false,
+      "cached": false
+    },
+    {
+      "url": String,
+      "quality": "sd",
+      "extension": "mp4",
+      "size": Number,
+      "formattedSize": String,
+      "videoAvailable": true,
+      "audioAvailable": true,
+      "chunked": false,
+      "cached": false
+    },
+    {
+      "url": String,
+      "quality": "watermark",
+      "extension": "mp4",
+      "size": Number,
+      "formattedSize": String,
+      "videoAvailable": true,
+      "audioAvailable": true,
+      "chunked": false,
+      "cached": false
+    },
+    {
+      "url": String,
+      "quality": "128kbps",
+      "extension": "mp3",
+      "size": Number,
+      "formattedSize": String,
+      "videoAvailable": false,
+      "audioAvailable": true,
+      "chunked": false,
+      "cached": false
+    }
+  ]
 }
-]
-}
+
 ```
 
 On failure, the response will include:
