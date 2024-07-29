@@ -3,9 +3,6 @@
   "description": "This API allows you to download media content from TikTok. You can retrieve video and audio download URLs, along with metadata about the video.",
   "type": "commonjs",
   "main": "index.js",
-  "engines": {
-    "node": "18.x"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
