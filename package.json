@@ -17,7 +17,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
-    "nayan-media-downloader": "^2.4.5",
+     "tiktok-api-downloader": "^0.2.0",
     "got": "^11.8.2"
   }
 }
