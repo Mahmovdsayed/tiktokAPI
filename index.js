@@ -1,6 +1,6 @@
-const express = require("express");
-const cors = require("cors");
-const { downloadVideo } = require("tiktok-api-downloader");
+import express from "express";
+import cors from "cors";
+import { downloadVideo } from "tiktok-api-downloader";
 const app = express();
 const PORT = process.env.PORT || 4000;
 
